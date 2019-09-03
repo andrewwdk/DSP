@@ -33,6 +33,8 @@
             this.task1bButton = new System.Windows.Forms.Button();
             this.task1cButton = new System.Windows.Forms.Button();
             this.task2Button = new System.Windows.Forms.Button();
+            this.task2bButton = new System.Windows.Forms.Button();
+            this.task4Button = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.backgroundPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -47,7 +49,7 @@
             // 
             // task1aButton
             // 
-            this.task1aButton.Location = new System.Drawing.Point(1422, 40);
+            this.task1aButton.Location = new System.Drawing.Point(1422, 12);
             this.task1aButton.Name = "task1aButton";
             this.task1aButton.Size = new System.Drawing.Size(103, 84);
             this.task1aButton.TabIndex = 1;
@@ -57,7 +59,7 @@
             // 
             // task1bButton
             // 
-            this.task1bButton.Location = new System.Drawing.Point(1422, 155);
+            this.task1bButton.Location = new System.Drawing.Point(1422, 102);
             this.task1bButton.Name = "task1bButton";
             this.task1bButton.Size = new System.Drawing.Size(103, 84);
             this.task1bButton.TabIndex = 2;
@@ -67,7 +69,7 @@
             // 
             // task1cButton
             // 
-            this.task1cButton.Location = new System.Drawing.Point(1422, 270);
+            this.task1cButton.Location = new System.Drawing.Point(1422, 192);
             this.task1cButton.Name = "task1cButton";
             this.task1cButton.Size = new System.Drawing.Size(103, 84);
             this.task1cButton.TabIndex = 3;
@@ -77,7 +79,7 @@
             // 
             // task2Button
             // 
-            this.task2Button.Location = new System.Drawing.Point(1422, 384);
+            this.task2Button.Location = new System.Drawing.Point(1422, 282);
             this.task2Button.Name = "task2Button";
             this.task2Button.Size = new System.Drawing.Size(103, 84);
             this.task2Button.TabIndex = 4;
@@ -85,11 +87,33 @@
             this.task2Button.UseVisualStyleBackColor = true;
             this.task2Button.Click += new System.EventHandler(this.Task2Button_Click);
             // 
+            // task2bButton
+            // 
+            this.task2bButton.Location = new System.Drawing.Point(1422, 372);
+            this.task2bButton.Name = "task2bButton";
+            this.task2bButton.Size = new System.Drawing.Size(103, 84);
+            this.task2bButton.TabIndex = 5;
+            this.task2bButton.Text = "Task 2 (A, f - const, fi += pi10)";
+            this.task2bButton.UseVisualStyleBackColor = true;
+            this.task2bButton.Click += new System.EventHandler(this.Task2bButton_Click);
+            // 
+            // task4Button
+            // 
+            this.task4Button.Location = new System.Drawing.Point(1422, 462);
+            this.task4Button.Name = "task4Button";
+            this.task4Button.Size = new System.Drawing.Size(103, 84);
+            this.task4Button.TabIndex = 6;
+            this.task4Button.Text = "Task 4";
+            this.task4Button.UseVisualStyleBackColor = true;
+            this.task4Button.Click += new System.EventHandler(this.Task4Button_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1537, 754);
+            this.Controls.Add(this.task4Button);
+            this.Controls.Add(this.task2bButton);
             this.Controls.Add(this.task2Button);
             this.Controls.Add(this.task1cButton);
             this.Controls.Add(this.task1bButton);
@@ -109,6 +133,8 @@
         private System.Windows.Forms.Button task1bButton;
         private System.Windows.Forms.Button task1cButton;
         private System.Windows.Forms.Button task2Button;
+        private System.Windows.Forms.Button task2bButton;
+        private System.Windows.Forms.Button task4Button;
     }
 }
 

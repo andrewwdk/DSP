@@ -168,6 +168,7 @@ namespace Lab1
             var A = 9;
             var fiArray = new double[] { Math.PI/2, 0, Math.PI/4, Math.PI/3, Math.PI/6 };
             var fArray = new double[] { 1, 2, 3, 4, 5 };
+            //var fArray = new double[] { 20, 30, 20, 30, 20 };
             var pointsList = new List<Point>();
 
             bm = new Bitmap(backgroundPictureBox.Width, backgroundPictureBox.Height);
@@ -180,7 +181,63 @@ namespace Lab1
                     sum += A * Math.Sin(2 * Math.PI * fArray[i] * n / N + fiArray[i]);
                 }
 
-                pointsList.Add(new Point(initialX + n, (int)Math.Round(initialY - sum * pixelsInYUnit/3))); //!!! 2.5 scale 
+                pointsList.Add(new Point(initialX + n, (int)Math.Round(initialY - sum * pixelsInYUnit/3))); //!!! 3 scale 
+            }
+
+            DrawGraphics(pointsList.ToArray(), Color.Red);
+        }
+
+        private void Task2bButton_Click(object sender, EventArgs e)
+        {
+            var A = 9;
+            var fiArray = new double[] { Math.PI / 2, 0, Math.PI / 4, Math.PI / 3, Math.PI / 6 };
+            var fArray = new double[] { 1, 2, 3, 4, 5 };
+            var pointsList = new List<Point>();
+            Color color;
+
+            bm = new Bitmap(backgroundPictureBox.Width, backgroundPictureBox.Height);
+
+            for (int j = 0; j < 5; j++)
+            {
+                for (int n = 0; n < N; n++)
+                {
+                    double sum = 0;
+                    for (int i = 0; i < 5; i++)
+                    {
+                        sum += A * Math.Sin(2 * Math.PI * fArray[i] * n / N + fiArray[i] + j * Math.PI/10); 
+                    }
+
+                    pointsList.Add(new Point(initialX + n, (int)Math.Round(initialY - sum * pixelsInYUnit / 3))); //!!! 3 scale 
+                }
+
+                DecideColor(j, out color);
+                DrawGraphics(pointsList.ToArray(), color);
+                pointsList.Clear();
+            }
+        }
+
+        private void Task4Button_Click(object sender, EventArgs e)
+        {
+            var pointsList = new List<Point>();
+            Func<double, double> funcAmpl = (x) => -5 * x + 50;
+            Func<double, double> funcPhase = (x) => -1 * x + 5;
+            Func<double, double> funcFreq = (x) => -20 * x + 30;
+
+            //Func<double, double> funcAmpl = (x) => 5 + 0.15 * 5 * x;
+            //Func<double, double> funcPhase = (x) => Math.PI / 6 + 0.15 * Math.PI / 6 * x;
+            //Func<double, double> funcFreq = (x) => 25 + 25 * 0.15 * x;
+
+            bm = new Bitmap(backgroundPictureBox.Width, backgroundPictureBox.Height);
+
+            for (int i = 0; i < N; i++)
+            {
+                var x = i / (double)N;
+                var ampl = funcAmpl(x);
+                var phase = funcPhase(x);
+                var freq = funcFreq(x);
+
+                var y = ampl * Math.Sin(2 * Math.PI * freq * x + phase);
+                pointsList.Add(new Point(initialX + i, (int)Math.Round(initialY - y * pixelsInYUnit / 5))); //!!! 5 scale 
             }
 
             DrawGraphics(pointsList.ToArray(), Color.Red);
