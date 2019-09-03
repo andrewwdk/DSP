@@ -30,6 +30,9 @@
         {
             this.backgroundPictureBox = new System.Windows.Forms.PictureBox();
             this.task1aButton = new System.Windows.Forms.Button();
+            this.task1bButton = new System.Windows.Forms.Button();
+            this.task1cButton = new System.Windows.Forms.Button();
+            this.task2Button = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.backgroundPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -46,17 +49,50 @@
             // 
             this.task1aButton.Location = new System.Drawing.Point(1422, 40);
             this.task1aButton.Name = "task1aButton";
-            this.task1aButton.Size = new System.Drawing.Size(85, 43);
+            this.task1aButton.Size = new System.Drawing.Size(103, 84);
             this.task1aButton.TabIndex = 1;
-            this.task1aButton.Text = "Task 1a";
+            this.task1aButton.Text = "Task 1a (A=7, f=5, fi=(pi, 0, pi/3, pi/6, pi/2) )";
             this.task1aButton.UseVisualStyleBackColor = true;
             this.task1aButton.Click += new System.EventHandler(this.Task1aButton_Click);
+            // 
+            // task1bButton
+            // 
+            this.task1bButton.Location = new System.Drawing.Point(1422, 155);
+            this.task1bButton.Name = "task1bButton";
+            this.task1bButton.Size = new System.Drawing.Size(103, 84);
+            this.task1bButton.TabIndex = 2;
+            this.task1bButton.Text = "Task 1b (A=5, fi=3pi/4, f=(1, 5, 11, 6, 3) )";
+            this.task1bButton.UseVisualStyleBackColor = true;
+            this.task1bButton.Click += new System.EventHandler(this.Task1bButton_Click);
+            // 
+            // task1cButton
+            // 
+            this.task1cButton.Location = new System.Drawing.Point(1422, 270);
+            this.task1cButton.Name = "task1cButton";
+            this.task1cButton.Size = new System.Drawing.Size(103, 84);
+            this.task1cButton.TabIndex = 3;
+            this.task1cButton.Text = "Task 1c (f=3, fi=3pi/4, A=(1, 2, 11, 4, 2) )";
+            this.task1cButton.UseVisualStyleBackColor = true;
+            this.task1cButton.Click += new System.EventHandler(this.Task1cButton_Click);
+            // 
+            // task2Button
+            // 
+            this.task2Button.Location = new System.Drawing.Point(1422, 384);
+            this.task2Button.Name = "task2Button";
+            this.task2Button.Size = new System.Drawing.Size(103, 84);
+            this.task2Button.TabIndex = 4;
+            this.task2Button.Text = "Task 2";
+            this.task2Button.UseVisualStyleBackColor = true;
+            this.task2Button.Click += new System.EventHandler(this.Task2Button_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1537, 754);
+            this.Controls.Add(this.task2Button);
+            this.Controls.Add(this.task1cButton);
+            this.Controls.Add(this.task1bButton);
             this.Controls.Add(this.task1aButton);
             this.Controls.Add(this.backgroundPictureBox);
             this.Name = "Form1";
@@ -70,6 +106,9 @@
 
         private System.Windows.Forms.PictureBox backgroundPictureBox;
         private System.Windows.Forms.Button task1aButton;
+        private System.Windows.Forms.Button task1bButton;
+        private System.Windows.Forms.Button task1cButton;
+        private System.Windows.Forms.Button task2Button;
     }
 }
 
