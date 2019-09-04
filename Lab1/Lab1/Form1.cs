@@ -13,6 +13,7 @@ namespace Lab1
     public partial class Form1 : Form
     {
         const int pixelsInYUnit = 20;
+        const int pixelsInYUnit2 = 250;
         const int initialX = 50;
         readonly int initialY;
         const int N = 1024;
@@ -40,6 +41,19 @@ namespace Lab1
             backgroundPictureBox.Image = bm;
         }
 
+        private void DrawDeltaGraphics(Point[] points, Color color)
+        {
+            var graphics = Graphics.FromImage(bm);
+            DrawDeltaAxis(graphics);
+
+            for (int i = 0; i < points.Length - 1; i++)
+            {
+                graphics.DrawLine(new Pen(color), points[i], points[i + 1]);
+            }
+
+            backgroundPictureBox.Image = bm;
+        }
+
         private void DrawAxis(Bitmap bm)
         {
             var graphics = Graphics.FromImage(bm);
@@ -60,6 +74,24 @@ namespace Lab1
                 {
                     graphics.DrawString((-1 * i).ToString(), new Font("Arial", 12), new SolidBrush(Color.Black), initialX - 35, initialY + i * pixelsInYUnit - 8);
                 }
+            }
+        }
+
+        private void DrawDeltaAxis(Graphics graphics)
+        {
+            graphics.DrawLine(Pens.Black, initialX, initialY, backgroundPictureBox.Width, initialY);
+            graphics.DrawLine(Pens.Black, initialX, initialY - 250, initialX, initialY + 250);
+
+            for (int i = 0; i < 10; i++)
+            {
+                graphics.DrawLine(Pens.Black, initialX + 100 * i, initialY - 5, initialX + 100 * i, initialY + 5);
+                graphics.DrawString((768 + i * 100).ToString(), new Font("Arial", 8), new SolidBrush(Color.Black), initialX + 96 * i, initialY + 10);
+            }
+
+            for (double i = 0.5; i > -0.5; i -= 0.2)
+            {
+                graphics.DrawLine(Pens.Black, initialX + 5, initialY + (int)(i * pixelsInYUnit2), initialX - 5, initialY + (int)(i * pixelsInYUnit2));
+                graphics.DrawString((-1 * i).ToString(), new Font("Arial", 8), new SolidBrush(Color.Black), initialX - 35, initialY + (int)(i * pixelsInYUnit2) - 8);
             }
         }
 
@@ -241,6 +273,79 @@ namespace Lab1
             }
 
             DrawGraphics(pointsList.ToArray(), Color.Red);
+        }
+
+        private void DoPartTwo(double fi)
+        {
+            var K = 3 * N / 4;
+            Func<int, double> func = (n) => Math.Sin(2 * Math.PI * n / N + fi);
+            List<double> list = new List<double>() { N - 1 }; //list of M
+
+            var k = K;
+            while (k <= 2 * N)
+            {
+                list.Add(k);
+                k += 10;
+            }
+
+            list.Sort();  // 130 items
+
+            var Xi = new double[2 * N];
+
+            for (int i = 0; i < Xi.Length; i++)
+            {
+                Xi[i] = func(i);
+            }
+
+            var gamma1Array = new double[130];
+            var gamma2Array = new double[130];
+            var AArray = new double[130];
+            var deltaGamma1List = new List<Point>();
+            var deltaGamma2List = new List<Point>();
+            var deltaAList = new List<Point>();
+            double sum1 = 0;
+            double sum2 = 0;
+            double sum3 = 0;
+            double sum4 = 0;
+            int j = 0;
+
+            for (int i = 0; i < list.Count; i++)
+            {
+                while (j < list[i])
+                {
+                    sum1 += Xi[j] * Xi[j];
+                    sum2 += Xi[j];
+                    sum3 += Xi[j] * Math.Cos(2 * Math.PI * j);
+                    sum4 += Xi[j] * Math.Sin(2 * Math.PI * j);
+                    j++;
+                }
+
+                gamma1Array[i] = Math.Sqrt(sum1 / (list[i] + 1));
+                gamma2Array[i] = Math.Sqrt(sum1 / (list[i] + 1) - (sum2 / (list[i] + 1)) * (sum2 / (list[i] + 1)));
+                AArray[i] = (2 / list[i]) * Math.Sqrt(sum3 * sum3 - sum4 * sum4);
+
+                if (double.IsNaN(AArray[i]) == false)
+                {
+                    deltaAList.Add(new Point(initialX + (int)list[i] - 768, (int)Math.Round(initialY - (1 - AArray[i]) * pixelsInYUnit2)));
+                }
+                deltaGamma1List.Add(new Point(initialX + (int)list[i] - 768, (int)Math.Round(initialY - (0.707 - gamma1Array[i]) * pixelsInYUnit2)));
+                deltaGamma2List.Add(new Point(initialX + (int)list[i] - 768, (int)Math.Round(initialY - (0.707 - gamma2Array[i]) * pixelsInYUnit2)));
+            }
+
+            bm = new Bitmap(backgroundPictureBox.Width, backgroundPictureBox.Height);
+            DrawDeltaGraphics(deltaGamma1List.ToArray(), Color.Red);
+            DrawDeltaGraphics(deltaGamma2List.ToArray(), Color.Blue);
+            DrawDeltaGraphics(deltaAList.ToArray(), Color.Green);
+        }
+
+        private void Part2Task1Button_Click(object sender, EventArgs e)
+        {
+            DoPartTwo(0);
+        }
+
+        private void Part2Task2Button_Click(object sender, EventArgs e)
+        {
+            DoPartTwo(Math.PI / 8);
         }
     }
 }

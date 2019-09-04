@@ -35,6 +35,8 @@
             this.task2Button = new System.Windows.Forms.Button();
             this.task2bButton = new System.Windows.Forms.Button();
             this.task4Button = new System.Windows.Forms.Button();
+            this.part2Task1Button = new System.Windows.Forms.Button();
+            this.part2Task2Button = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.backgroundPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -107,11 +109,33 @@
             this.task4Button.UseVisualStyleBackColor = true;
             this.task4Button.Click += new System.EventHandler(this.Task4Button_Click);
             // 
+            // part2Task1Button
+            // 
+            this.part2Task1Button.Location = new System.Drawing.Point(1422, 552);
+            this.part2Task1Button.Name = "part2Task1Button";
+            this.part2Task1Button.Size = new System.Drawing.Size(103, 84);
+            this.part2Task1Button.TabIndex = 7;
+            this.part2Task1Button.Text = "Part 2 Task 1";
+            this.part2Task1Button.UseVisualStyleBackColor = true;
+            this.part2Task1Button.Click += new System.EventHandler(this.Part2Task1Button_Click);
+            // 
+            // part2Task2Button
+            // 
+            this.part2Task2Button.Location = new System.Drawing.Point(1422, 644);
+            this.part2Task2Button.Name = "part2Task2Button";
+            this.part2Task2Button.Size = new System.Drawing.Size(103, 84);
+            this.part2Task2Button.TabIndex = 8;
+            this.part2Task2Button.Text = "Part 2 Task 2";
+            this.part2Task2Button.UseVisualStyleBackColor = true;
+            this.part2Task2Button.Click += new System.EventHandler(this.Part2Task2Button_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1537, 754);
+            this.Controls.Add(this.part2Task2Button);
+            this.Controls.Add(this.part2Task1Button);
             this.Controls.Add(this.task4Button);
             this.Controls.Add(this.task2bButton);
             this.Controls.Add(this.task2Button);
@@ -135,6 +159,8 @@
         private System.Windows.Forms.Button task2Button;
         private System.Windows.Forms.Button task2bButton;
         private System.Windows.Forms.Button task4Button;
+        private System.Windows.Forms.Button part2Task1Button;
+        private System.Windows.Forms.Button part2Task2Button;
     }
 }
 
