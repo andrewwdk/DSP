@@ -315,14 +315,14 @@ namespace Lab1
                 {
                     sum1 += Xi[j] * Xi[j];
                     sum2 += Xi[j];
-                    sum3 += Xi[j] * Math.Cos(2 * Math.PI * j);
-                    sum4 += Xi[j] * Math.Sin(2 * Math.PI * j);
+                    sum3 += Xi[j] * Math.Cos(2 * Math.PI * j / list[i]);
+                    sum4 += Xi[j] * Math.Sin(2 * Math.PI * j / list[i]);
                     j++;
                 }
 
                 gamma1Array[i] = Math.Sqrt(sum1 / (list[i] + 1));
                 gamma2Array[i] = Math.Sqrt(sum1 / (list[i] + 1) - (sum2 / (list[i] + 1)) * (sum2 / (list[i] + 1)));
-                AArray[i] = (2 / list[i]) * Math.Sqrt(sum3 * sum3 - sum4 * sum4);
+                AArray[i] = (2 / list[i]) * Math.Sqrt(sum3 * sum3 + sum4 * sum4);
 
                 if (double.IsNaN(AArray[i]) == false)
                 {
