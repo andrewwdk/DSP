@@ -7,3 +7,4 @@ D:\github\DSP\Lab1\Lab1\obj\Debug\Lab1.csproj.GenerateResource.cache
 D:\github\DSP\Lab1\Lab1\obj\Debug\Lab1.csproj.CoreCompileInputs.cache
 D:\github\DSP\Lab1\Lab1\obj\Debug\Lab1.exe
 D:\github\DSP\Lab1\Lab1\obj\Debug\Lab1.pdb
+D:\github\DSP\Lab1\Lab1\obj\Debug\Lab1.csprojAssemblyReference.cache
