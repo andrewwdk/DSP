@@ -12,8 +12,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.Windows.Forms;
-using Xceed.Wpf.Toolkit;
 
 namespace Lab4
 {
@@ -25,7 +23,11 @@ namespace Lab4
         public MainWindow()
         {
             InitializeComponent();
-            
+        }
+
+        private void OpenButton_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
