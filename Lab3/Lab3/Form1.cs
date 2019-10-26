@@ -13,7 +13,7 @@ namespace Lab3
     public partial class Form1 : Form
     {
         const int N = 256;
-        const int harmonicCount = 200;
+        const int harmonicCount = 500;
 
         double B1;
         double B2;
