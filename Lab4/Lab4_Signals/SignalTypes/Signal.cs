@@ -9,8 +9,8 @@ namespace Lab4_Signals.SignalTypes
     public abstract class Signal
     {
         public double A { get; protected set; }
-        public double F { get; protected set; }
-        public double Fi { get; protected set; }
+        public double F { get; set; }
+        public double Fi { get; set; }
 
         public Signal(double A, double f, double fi)
         {

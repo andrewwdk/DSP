@@ -14,6 +14,7 @@ namespace Lab4_Signals
     public partial class Form1 : Form
     {
         const int N = 1024;
+        const int samples = 88200;
 
         public Form1()
         {
@@ -185,7 +186,78 @@ namespace Lab4_Signals
 
         private void ModulationButton_Click(object sender, EventArgs e)
         {
+            double A, f, fi, dutyFactor, AMod, fMod, fiMod, dutyMod;
+            Signal mainSignal = null, modalationSignal = null;
+            Modulation modulation = new Modulation();
+            SoundGenerator generator = new SoundGenerator();
 
+            if (IsCorrectDouble(ATextBox.Text, out A) && IsCorrectDouble(fTextBox.Text, out f) && IsCorrectDouble(fiTextBox.Text, out fi)
+                && IsCorrectDouble(dutyTextBox.Text, out dutyFactor) && IsCorrectDouble(AModulationTextBox.Text, out AMod) && IsCorrectDouble(fModulationTextBox.Text, out fMod) &&
+                IsCorrectDouble(fiModulationTextBox.Text, out fiMod) && IsCorrectDouble(dutyModulationTextBox.Text, out dutyMod))
+            {
+                if (sinusoidRadioButton.Checked)
+                {
+                    mainSignal = new SinusoidSignal(A, f, fi);
+                }
+
+                if (dutyCycleRadioButton.Checked)
+                {
+                    mainSignal = new DutyCycleSignal(A, f, fi, dutyFactor);
+                }
+
+                if (triangleRadioButton.Checked)
+                {
+                    mainSignal = new TriangleSignal(A, f, fi);
+                }
+
+                if (sawtoothedRadioButton.Checked)
+                {
+                    mainSignal = new SawtoothedSignal(A, f, fi);
+                }
+
+                if (noiseRadioButton.Checked)
+                {
+                    mainSignal = new NoiseSignal(A, f, fi);
+                }
+
+                if (SinusoidModulationRadioButton.Checked)
+                {
+                    modalationSignal = new SinusoidSignal(AMod, fMod, fiMod);
+                }
+
+                if (DutyCycleModulationRadioButton.Checked)
+                {
+                    modalationSignal = new DutyCycleSignal(AMod, fMod, fiMod, dutyMod);
+                }
+
+                if (triangleModulationRadioButton.Checked)
+                {
+                    modalationSignal = new TriangleSignal(AMod, fMod, fiMod);
+                }
+
+                if (sawtoothedModulationRadioButton.Checked)
+                {
+                    modalationSignal = new SawtoothedSignal(AMod, fMod, fiMod);
+                }
+
+                if (noiseModulationRadioButton.Checked)
+                {
+                    modalationSignal = new NoiseSignal(AMod, fMod, fiMod);
+                }
+
+                if (AmplitudeModulationRadioButton.Checked)
+                {
+                    DrawSignalByValues(modulation.GetAmplitudeModulation(mainSignal, modalationSignal, N));
+                    generator.WriteSignalByValuesToFile(modulation.GetAmplitudeModulation(mainSignal, modalationSignal, samples));    
+                }
+                else
+                {
+                    DrawSignalByValues(modulation.GetFrequencyModulation(mainSignal, modalationSignal, N));
+                    generator.WriteSignalByValuesToFile(modulation.GetFrequencyModulation(mainSignal, modalationSignal, samples));
+                }
+
+                generator.PlayCurrentFile();
+            }
         }
     }
 }
